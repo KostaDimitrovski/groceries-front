@@ -1,84 +1,116 @@
 import React from 'react';
-
-import { LockOutlined } from "@mui/icons-material";
+import cartLogin from '../pictures/cart.png'
+import GoogleIcon from '@mui/icons-material/Google';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import {
     Container,
     CssBaseline,
     Box,
-    Avatar,
     Typography,
     TextField,
-    Button,
     Grid,
 } from "@mui/material";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import {useState} from "react";
+import {Link} from "react-router-dom";
+import {
+    GoogleButton,
+    StyledAuthButton,
+    StyledWhiteBody,
+    StyledDivPicuture, StyledLoginDiv
+} from "../styled/StyledComponents";
 
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const handleLogin = () => {};
+    const handleLogin = () => {
+    };
 
     return (
         <>
-            <Container maxWidth="xs">
-                <CssBaseline />
-                <Box
-                    sx={{
-                        mt: 20,
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                    }}
-                >
-                    <Avatar sx={{ m: 1, bgcolor: "primary.light" }}>
-                        <LockOutlined />
-                    </Avatar>
-                    <Typography variant="h5">Login</Typography>
-                    <Box sx={{ mt: 1 }}>
-                        <TextField
-                            margin="normal"
-                            required
-                            fullWidth
-                            id="email"
-                            label="Email Address"
-                            name="email"
-                            autoFocus
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                        />
-
-                        <TextField
-                            margin="normal"
-                            required
-                            fullWidth
-                            id="password"
-                            name="password"
-                            label="Password"
-                            type="password"
-                            value={password}
-                            onChange={(e) => {
-                                setPassword(e.target.value);
+            <StyledWhiteBody>
+                <StyledLoginDiv>
+                    <Container maxWidth="xs">
+                        <CssBaseline/>
+                        <Box
+                            sx={{
+                                mt: 20,
+                                display: "flex",
+                                flexDirection: "column",
+                                alignItems: "center",
                             }}
-                        />
-
-                        <Button
-                            fullWidth
-                            variant="contained"
-                            sx={{ mt: 3, mb: 2 }}
-                            onClick={handleLogin}
                         >
-                            Login
-                        </Button>
-                        <Grid container justifyContent={"flex-end"}>
-                            <Grid item>
-                                <Link to="/register">Don't have an account? Register</Link>
-                            </Grid>
-                        </Grid>
-                    </Box>
-                </Box>
-            </Container>
+                            <div>
+                                <Typography variant="h6">Добродојдовте 👋</Typography>
+                                <br/>
+                                <Typography variant="h4">Продолжете со најава</Typography>
+                            </div>
+                            <GoogleButton
+                                fullWidth
+
+                                variant="contained"
+                                sx={{mt: 3, mb: 2}}
+                                onClick={handleLogin}
+                            >
+                                <GoogleIcon fontSize={"small"} sx={{marginRight: 1}}/>
+                                Најавете се со Google
+                            </GoogleButton>
+
+                            <Box sx={{mt: 1}}>
+
+                                <TextField
+                                    variant={"filled"}
+                                    margin="normal"
+                                    required
+                                    fullWidth
+                                    id="email"
+                                    label="Email Address"
+                                    name="email"
+                                    autoFocus
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                />
+
+                                <TextField
+                                    margin="normal"
+                                    variant="filled"
+                                    required
+                                    fullWidth
+                                    id="password"
+                                    name="password"
+                                    label="Password"
+                                    type="password"
+                                    value={password}
+                                    onChange={(e) => {
+                                        setPassword(e.target.value);
+                                    }}
+                                />
+
+                                <StyledAuthButton
+                                    fullWidth
+                                    color={"secondary"}
+                                    variant="contained"
+                                    sx={{mt: 3, mb: 2}}
+                                    onClick={handleLogin}
+                                >
+                                    ПРОДОЛЖЕТЕ
+                                    <NavigateNextIcon/>
+                                </StyledAuthButton>
+
+
+                                <Grid container justifyContent={"flex-end"}>
+                                    <Grid item>
+                                        <Link to="/register">Немате акаунт? Регистрирајте се</Link>
+                                    </Grid>
+                                </Grid>
+                            </Box>
+                        </Box>
+                    </Container>
+                    <StyledDivPicuture>
+                        <img src={cartLogin} alt={"Cart"}/>
+                    </StyledDivPicuture>
+                </StyledLoginDiv>
+            </StyledWhiteBody>
         </>
     );
 };
