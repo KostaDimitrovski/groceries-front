@@ -1,97 +1,131 @@
 import React from 'react';
 
 import {
-    Avatar,
     Box,
-    Button,
     Container,
     CssBaseline,
     Grid,
     TextField,
     Typography,
 } from "@mui/material";
-import { LockOutlined } from "@mui/icons-material";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import {useState} from "react";
+import {Link} from "react-router-dom";
+import {
+    GoogleButton,
+    StyledAuthButton,
+    StyledDivPicuture,
+    StyledLoginDiv,
+    StyledWhiteBody
+} from "../styled/StyledComponents";
+import GoogleIcon from "@mui/icons-material/Google";
+import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+import cartLogin from "../pictures/cart.png";
 
 const Register = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const handleRegister = async () => {};
+    const handleRegister = async () => {
+    };
 
     return (
         <>
-            <Container maxWidth="xs">
-                <CssBaseline />
-                <Box
-                    sx={{
-                        mt: 20,
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                    }}
-                >
-                    <Avatar sx={{ m: 1, bgcolor: "primary.light" }}>
-                        <LockOutlined />
-                    </Avatar>
-                    <Typography variant="h5">Register</Typography>
-                    <Box sx={{ mt: 3 }}>
-                        <Grid container spacing={2}>
-                            <Grid item xs={12}>
-                                <TextField
-                                    name="name"
-                                    required
-                                    fullWidth
-                                    id="name"
-                                    label="Name"
-                                    autoFocus
-                                    value={name}
-                                    onChange={(e) => setName(e.target.value)}
-                                />
-                            </Grid>
+            <StyledWhiteBody>
+                <StyledLoginDiv>
+                    <Container maxWidth="xs">
+                        <CssBaseline/>
+                        <Box
+                            sx={{
+                                mt: 20,
+                                display: "flex",
+                                flexDirection: "column",
+                                alignItems: "center",
+                            }}
+                        >
+                            <div>
+                                <Typography variant="h6">Добродојдовте 👋</Typography>
+                                <br/>
+                                <Typography variant="h4">Продолжете со регистрација</Typography>
+                            </div>
+                            <GoogleButton
+                                fullWidth
 
-                            <Grid item xs={12}>
+                                variant="contained"
+                                sx={{mt: 3, mb: 2}}
+                            >
+                                <GoogleIcon fontSize={"small"} sx={{marginRight: 1}}/>
+                                Најавете се со Google
+                            </GoogleButton>
+
+                            <Box sx={{mt: 1}}>
+
                                 <TextField
+                                    variant={"filled"}
+                                    margin="normal"
                                     required
                                     fullWidth
                                     id="email"
                                     label="Email Address"
                                     name="email"
+                                    autoFocus
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                 />
-                            </Grid>
-                            <Grid item xs={12}>
+
                                 <TextField
+                                    margin="normal"
+                                    variant="filled"
                                     required
                                     fullWidth
+                                    id="password"
                                     name="password"
                                     label="Password"
                                     type="password"
-                                    id="password"
                                     value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
+                                    onChange={(e) => {
+                                        setPassword(e.target.value);
+                                    }}
                                 />
-                            </Grid>
-                        </Grid>
-                        <Button
-                            fullWidth
-                            variant="contained"
-                            sx={{ mt: 3, mb: 2 }}
-                            onClick={handleRegister}
-                        >
-                            Register
-                        </Button>
-                        <Grid container justifyContent="flex-end">
-                            <Grid item>
-                                <Link to="/login">Already have an account? Login</Link>
-                            </Grid>
-                        </Grid>
-                    </Box>
-                </Box>
-            </Container>
+                                <TextField
+                                    margin="normal"
+                                    variant="filled"
+                                    required
+                                    fullWidth
+                                    id="password"
+                                    name="password"
+                                    label="Password confirm"
+                                    type="password"
+                                    value={password}
+                                    onChange={(e) => {
+                                        setPassword(e.target.value);
+                                    }}
+                                />
+
+                                <StyledAuthButton
+                                    fullWidth
+                                    color={"secondary"}
+                                    variant="contained"
+                                    sx={{mt: 3, mb: 2}}
+                                >
+                                    ПРОДОЛЖЕТЕ
+                                    <NavigateNextIcon/>
+                                </StyledAuthButton>
+
+
+                                <Grid container justifyContent={"flex-end"}>
+                                    <Grid item>
+                                        <Link to="/login">Најава</Link>
+                                    </Grid>
+                                </Grid>
+                            </Box>
+                        </Box>
+                    </Container>
+                    <StyledDivPicuture>
+                        <img src={cartLogin} alt={"Cart"}/>
+                    </StyledDivPicuture>
+                </StyledLoginDiv>
+            </StyledWhiteBody>
         </>
     );
 };
