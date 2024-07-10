@@ -14,7 +14,7 @@ import {
     GoogleButton,
     StyledAuthButton,
     StyledDivPicuture,
-    StyledLoginDiv,
+    StyledFlexDiv,
     StyledWhiteBody
 } from "../styled/StyledComponents";
 import GoogleIcon from "@mui/icons-material/Google";
@@ -32,7 +32,7 @@ const Register = () => {
     return (
         <>
             <StyledWhiteBody>
-                <StyledLoginDiv>
+                <StyledFlexDiv>
                     <Container maxWidth="xs">
                         <CssBaseline/>
                         <Box
@@ -124,7 +124,7 @@ const Register = () => {
                     <StyledDivPicuture>
                         <img src={cartLogin} alt={"Cart"}/>
                     </StyledDivPicuture>
-                </StyledLoginDiv>
+                </StyledFlexDiv>
             </StyledWhiteBody>
         </>
     );
