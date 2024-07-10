@@ -22,6 +22,9 @@ const Header = () => {
     const goToRegister = () => {
         navigate('/register'); // Adjust the route as needed
     };
+    const goToCart = () => {
+        navigate('/cart'); // Adjust the route as needed
+    };
     return (
         <StyledHeader>
             {/*<img src={"https://www.creativefabrica.com/wp-content/uploads/2018/11/Watermelon-logo-by-meisuseno.jpg"}></img>*/}
@@ -40,7 +43,7 @@ const Header = () => {
                 </StyledButton>
                 <SearchDiv>
                     <SearchIconDiv>
-                        <SearchIcon color="disabled" fontSize={"small"}/>
+                        <SearchIcon  color="disabled" fontSize={"small"}/>
                     </SearchIconDiv>
                     <StyledSearchBar placeholder="Побарајте производ:"/>
                 </SearchDiv>
@@ -49,7 +52,7 @@ const Header = () => {
                 <IconButton>
                     <FavoriteBorderIcon/>
                 </IconButton>
-                <IconButton>
+                <IconButton onClick={goToCart}>
                     <ShoppingCartOutlinedIcon/>
                 </IconButton>
 

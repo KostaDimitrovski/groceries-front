@@ -16,7 +16,7 @@ import {
     GoogleButton,
     StyledAuthButton,
     StyledWhiteBody,
-    StyledDivPicuture, StyledLoginDiv
+    StyledDivPicuture, StyledFlexDiv
 } from "../styled/StyledComponents";
 
 const Login = () => {
@@ -29,7 +29,7 @@ const Login = () => {
     return (
         <>
             <StyledWhiteBody>
-                <StyledLoginDiv>
+                <StyledFlexDiv>
                     <Container maxWidth="xs">
                         <CssBaseline/>
                         <Box
@@ -109,7 +109,7 @@ const Login = () => {
                     <StyledDivPicuture>
                         <img src={cartLogin} alt={"Cart"}/>
                     </StyledDivPicuture>
-                </StyledLoginDiv>
+                </StyledFlexDiv>
             </StyledWhiteBody>
         </>
     );

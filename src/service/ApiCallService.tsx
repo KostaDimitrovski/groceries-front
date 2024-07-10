@@ -1,6 +1,6 @@
 import axios from '../custom-axios'
 
-interface Item {
+interface Product {
 
     name: string;
     description: string;
@@ -52,20 +52,20 @@ const ApiCallService = {
     },
 
 
-    fetchItems: (): Promise<any> => {
-        return axios.get("/items/list");
+    fetchProducts: (): Promise<any> => {
+        return axios.get("/products/list");
     },
-    fetchItem: (id: number): Promise<any> => {
-        return axios.get(`/items/${id}`);
+    fetchProduct: (id: number): Promise<any> => {
+        return axios.get(`/products/${id}`);
     },
-    editItem: (id:number, item: Item): Promise<any> => {
-        return axios.put(`/items/edit/${id}`,item);
+    editProduct: (id:number, product: Product): Promise<any> => {
+        return axios.put(`/products/edit/${id}`,product);
     },
-    deleteItem: (id: number): Promise<any> => {
-        return axios.delete(`/items/delete/${id}`);
+    deleteProduct: (id: number): Promise<any> => {
+        return axios.delete(`/products/delete/${id}`);
     },
-    addItem: (item: Item): Promise<any> => {
-        return axios.post("/items/add",item);
+    addProduct: (product: Product): Promise<any> => {
+        return axios.post("/products/add",product);
     },
 
 
