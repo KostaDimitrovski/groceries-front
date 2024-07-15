@@ -13,7 +13,6 @@ import {
 import {useState} from "react";
 import {Link} from "react-router-dom";
 import {
-    GoogleButton,
     StyledAuthButton,
     StyledWhiteBody,
     StyledDivPicuture, StyledFlexDiv
@@ -45,16 +44,15 @@ const Login = () => {
                                 <br/>
                                 <Typography variant="h4">Продолжете со најава</Typography>
                             </div>
-                            <GoogleButton
+                            <StyledAuthButton
                                 fullWidth
-
                                 variant="contained"
                                 sx={{mt: 3, mb: 2}}
                                 onClick={handleLogin}
                             >
                                 <GoogleIcon fontSize={"small"} sx={{marginRight: 1}}/>
-                                Најавете се со Google
-                            </GoogleButton>
+                                НАЈАВЕТЕ СЕ СО GOOGLE
+                            </StyledAuthButton>
 
                             <Box sx={{mt: 1}}>
 
@@ -88,7 +86,6 @@ const Login = () => {
 
                                 <StyledAuthButton
                                     fullWidth
-                                    color={"secondary"}
                                     variant="contained"
                                     sx={{mt: 3, mb: 2}}
                                     onClick={handleLogin}

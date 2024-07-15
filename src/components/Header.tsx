@@ -4,68 +4,95 @@ import {
     SearchIconDiv,
     StyledButton,
     StyledHeader,
-    StyledLeftDiv, StyledRightDiv,
     StyledSearchBar
 } from "../styled/StyledComponents";
-import {IconButton} from "@mui/material";
-import MenuIcon from '@mui/icons-material/Menu';
+import { Grid, IconButton, Box } from "@mui/material";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
 
 const Header = () => {
     const navigate = useNavigate();
+
     const goToLogin = () => {
-        navigate('/login'); // Adjust the route as needed
+        navigate('/login');
     };
     const goToRegister = () => {
-        navigate('/register'); // Adjust the route as needed
+        navigate('/register');
     };
     const goToCart = () => {
-        navigate('/cart'); // Adjust the route as needed
+        navigate('/cart');
     };
+    const goToHomePage = () => {
+        navigate('/');
+    };
+    const goToShop = () => {
+        navigate('/products');
+    };
+
     return (
         <StyledHeader>
-            {/*<img src={"https://www.creativefabrica.com/wp-content/uploads/2018/11/Watermelon-logo-by-meisuseno.jpg"}></img>*/}
-            <StyledLeftDiv>
-                <IconButton edge="start" color="inherit" aria-label="menu">
-                    <MenuIcon/>
-                </IconButton>
-                <StyledButton>
-                    Company name
-                </StyledButton>
-                <StyledButton>
-                    Home
-                </StyledButton>
-                <StyledButton>
-                    Shop
-                </StyledButton>
-                <SearchDiv>
-                    <SearchIconDiv>
-                        <SearchIcon  color="disabled" fontSize={"small"}/>
-                    </SearchIconDiv>
-                    <StyledSearchBar placeholder="Побарајте производ:"/>
-                </SearchDiv>
-            </StyledLeftDiv>
-            <StyledRightDiv>
-                <IconButton>
-                    <FavoriteBorderIcon/>
-                </IconButton>
-                <IconButton onClick={goToCart}>
-                    <ShoppingCartOutlinedIcon/>
-                </IconButton>
-
-                <StyledButton onClick={goToLogin} >
-                    LOG IN
-                </StyledButton>
-                <StyledButton onClick={goToRegister}>
-                    SIGN UP
-                </StyledButton>
-            </StyledRightDiv>
-
+            <Grid container alignItems="center" justifyContent="space-between">
+                <Grid item>
+                    <Grid container alignItems="center" spacing={2}>
+                        <Grid item>
+                            <IconButton edge="start" color="inherit" aria-label="menu" onClick={goToHomePage}>
+                                🍉
+                            </IconButton>
+                        </Grid>
+                        <Grid item>
+                            <StyledButton>
+                                Company name
+                            </StyledButton>
+                        </Grid>
+                        <Grid item>
+                            <StyledButton onClick={goToHomePage}>
+                                Home
+                            </StyledButton>
+                        </Grid>
+                        <Grid item>
+                            <StyledButton onClick={goToShop}>
+                                Shop
+                            </StyledButton>
+                        </Grid>
+                        <Grid item>
+                            <SearchDiv>
+                                <SearchIconDiv>
+                                    <SearchIcon color="disabled" fontSize="small" />
+                                </SearchIconDiv>
+                                <StyledSearchBar placeholder="Побарајте производ:" />
+                            </SearchDiv>
+                        </Grid>
+                    </Grid>
+                </Grid>
+                <Grid item>
+                    <Grid container alignItems="center" spacing={2}>
+                        <Grid item>
+                            <IconButton>
+                                <FavoriteBorderIcon />
+                            </IconButton>
+                        </Grid>
+                        <Grid item>
+                            <IconButton onClick={goToCart}>
+                                <ShoppingCartOutlinedIcon />
+                            </IconButton>
+                        </Grid>
+                        <Grid item>
+                            <StyledButton onClick={goToLogin}>
+                                LOG IN
+                            </StyledButton>
+                        </Grid>
+                        <Grid item>
+                            <StyledButton onClick={goToRegister}>
+                                SIGN UP
+                            </StyledButton>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Grid>
         </StyledHeader>
-    )
-}
+    );
+};
 
-export default Header
+export default Header;
