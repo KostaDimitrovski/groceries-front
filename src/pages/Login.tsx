@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import cartLogin from '../pictures/cart.png';
-import GoogleIcon from '@mui/icons-material/Google';
-import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+
 import {
     Container,
     CssBaseline,
