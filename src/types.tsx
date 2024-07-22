@@ -7,8 +7,22 @@ export interface Product {
     discount: string;
     volume: string;
     type: string;
-    pictureUrl: string; // Assuming this should be a URL string
-    company: Company; // Type defined as Company
+    pictureUrl: string;
+    company: Company;
+}
+export interface CartItem {
+    id: number;
+    name: string;
+    price: number;
+    quantity: number;
+
+}
+
+export interface Cart {
+    isCartOpen: boolean;
+    cartItems: CartItem[];
+    cartCount: number;
+    cartTotal: number;
 }
 
 export interface Company {
@@ -18,7 +32,7 @@ export interface Company {
     phone: string;
     email: string;
     location: string;
-    products: Product[]; // Type defined as an array of Product
+    products: Product[];
 }
 
 export interface ProductsMap {

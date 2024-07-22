@@ -69,7 +69,6 @@ export const StyledFlexDiv = styled('div')({
     width: '100%',
     maxWidth: '1200px',
     margin: '0 auto',
-    padding: '0px 20px 20px 20px'
 });
 
 export const StyledFlexDivWish = styled('div')({
@@ -85,8 +84,8 @@ export const StyledFlexDivCart = styled('div')({
 export const StyledProductsGrid = styled('div')({
     borderRadius: 10,
     border: '1px solid black',
-    width: '60%',
-    height: '100%',
+    width: '70%',
+    maxHeight: '74px',
     outline: '1px  black',
     boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
 
@@ -97,22 +96,6 @@ export const StyledCardDiv = styled('div')({
 
 });
 
-export const StyledViewProductsDiv = styled('div')({
-    justifyContent: 'center',
-    width: '60%',
-    display: 'flex',
-    gap: '50px',
-    margin: 'auto'
-})
-
-export const StyledFlexDivCartProduct = styled('div')({
-    display: 'flex',
-    paddingTop: '50px',
-    paddingBottom: '50px',
-    justifyContent: 'center',
-    gap: '50px',
-
-});
 
 
 
@@ -134,7 +117,7 @@ export const StyledDivider = styled(Divider)({
     color: 'black',
     borderTop: '2px solid black',
     width: '800px',
-    height: '10%'
+    height: '2%'
 });
 
 
@@ -144,7 +127,6 @@ export const StyledProductsBox = styled(Card)({
     height: '650px',
     background: '#F5EEAD',
     boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
-    // marginLeft: '80px',
     marginTop: '60px',
     border: '1px solid black',
 
@@ -164,9 +146,11 @@ export const StyledCardActions = styled(CardActions)({
 });
 export const StyledBigCard = styled(Card)({
     maxWidth: '400px',
+    minWidth: '400px',
     maxHeight: '500px',
     background: theme.palette.background.default,
     borderRadius: '20px',
+    boxShadow: '1px 16px 8px rgba(0, 0, 0, 0.3)'
 
 
 });
