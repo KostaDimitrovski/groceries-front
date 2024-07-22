@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { StyledFlexDivCartProduct } from "../styled/StyledComponents";
+import { Grid } from "@mui/material";
 import bakery from "../pictures/cards/bakery.jpg";
 import cake from "../pictures/cards/cake.jpg";
 import meat from "../pictures/cards/meat.jpg";
@@ -77,17 +77,20 @@ export const BigCards: React.FC = () => {
 
     return (
         <div>
-            <StyledFlexDivCartProduct>
+            <Grid container spacing={8} justifyContent="center" paddingTop={'50px'} >
                 {getCurrentCards().map((card, index) => (
-                    <CategoryCard
-                        key={index}
-                        image={card.image}
-                        title={card.title}
-                        description={card.description}
-                        route={card.route}
-                    />
+                    <Grid item xs={12} sm={6} md={'auto'} key={index}  direction="row"
+                          justifyContent="center"
+                          alignItems="center">
+                        <CategoryCard
+                            image={card.image}
+                            title={card.title}
+                            description={card.description}
+                            route={card.route}
+                        />
+                    </Grid>
                 ))}
-            </StyledFlexDivCartProduct>
+            </Grid>
             <PaginationDots total={cardData.length} currentIndex={currentIndex} />
         </div>
     );

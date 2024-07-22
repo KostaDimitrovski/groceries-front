@@ -18,7 +18,6 @@ const CategoryBigCard: React.FC<CategoryBigCardProps> = ({ image, title, descrip
     };
 
     return (
-    <Grid item xs={10} sm={6} md={4}>
         <StyledBigCard>
             <CardMedia sx={{ height: 150 }} image={image} />
             <CardContent>
@@ -35,7 +34,7 @@ const CategoryBigCard: React.FC<CategoryBigCardProps> = ({ image, title, descrip
                 </Button>
             </StyledCardActions>
         </StyledBigCard>
-    </Grid>
+
 
 
     );

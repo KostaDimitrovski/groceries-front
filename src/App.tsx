@@ -9,7 +9,8 @@ import apiCallService from "./service/ApiCallService";
 import {setCompaniesMap} from "./store/companies/company.action";
 import {setProductsMap} from "./store/products/product.action";
 import {useDispatch} from "react-redux";
-import Bakery from "./components/Bakery";
+import {Alcohol, Cakes, MeatFish, Bakery, Care, Vegetables} from "./pages/ShopPages";
+import {Wishlist} from "./pages/Wishlist";
 
 function App() {
     const dispatch = useDispatch();
@@ -46,7 +47,13 @@ function App() {
            <Route path="/Register" element={<Register/>}/>
            <Route path="/Products" element={<Products/>}/>
            <Route path="/Cart" element={<Cart/>}/>
-           <Route path="/Shop/Bakery" element={<Bakery/>}/>
+           <Route path="/Shop/bakery" element={<Bakery/>}/>
+           <Route path="/shop/cakes" element={<Cakes/>} />
+           <Route path="/shop/alcohol" element={<Alcohol/>} />
+           <Route path="/shop/meat" element={<MeatFish/>} />
+           <Route path="/shop/care" element={<Care/>} />
+           <Route path="/shop/vegetables" element={<Vegetables/>} />
+           <Route path="/wishlist" element={<Wishlist/>} />
        </Routes>
    </>
   );

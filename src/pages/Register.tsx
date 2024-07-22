@@ -1,31 +1,41 @@
-import React from 'react';
-
+import React, { useState } from 'react';
+import GoogleIcon from '@mui/icons-material/Google';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import {
-    Box,
     Container,
     CssBaseline,
-    Grid,
-    TextField,
+    Box,
     Typography,
+    TextField,
+    Grid,
 } from "@mui/material";
-import {useState} from "react";
-import {Link} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
     StyledAuthButton,
-    StyledDivPicuture,
     StyledFlexDiv,
     StyledWhiteBody
 } from "../styled/StyledComponents";
-import GoogleIcon from "@mui/icons-material/Google";
-import NavigateNextIcon from "@mui/icons-material/NavigateNext";
-import cartLogin from "../pictures/cart.png";
+import axios from '../custom-axios';
 
 const Register = () => {
     const [name, setName] = useState("");
+    const [lastName, setlastName] = useState("");
+    const [phone, setPhone] = useState("");
+    const [address, setAddress] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const navigate = useNavigate();
 
     const handleRegister = async () => {
+        try {
+            const response = await axios.post('/auth/register', { name, email, password, phone, address, lastName });
+            const { token } = response.data;
+            localStorage.setItem('token', token);
+            navigate('/login');
+        } catch (error) {
+            console.error('Registration error:', error);
+
+        }
     };
 
     return (
@@ -36,7 +46,7 @@ const Register = () => {
                         <CssBaseline/>
                         <Box
                             sx={{
-                                mt: 20,
+                                mt: 5,
                                 display: "flex",
                                 flexDirection: "column",
                                 alignItems: "center",
@@ -45,7 +55,12 @@ const Register = () => {
                             <div>
                                 <Typography variant="h6">Добродојдовте 👋</Typography>
                                 <br/>
-                                <Typography variant="h4">Продолжете со регистрација</Typography>
+                                <Typography variant="h4" sx={{
+                                    whiteSpace: 'nowrap',
+                                    overflow: 'hidden',
+                                    textOverflow: 'ellipsis',
+                                    font: 'bold'
+                                }}>Продолжете со регистрација</Typography>
                             </div>
                             <StyledAuthButton
                                 fullWidth
@@ -56,11 +71,42 @@ const Register = () => {
                                 НАЈАВЕТЕ СЕ СО GOOGLE
                             </StyledAuthButton>
                             <Box sx={{mt: 1}}>
-
+                                <TextField
+                                    margin="normal"
+                                    size='small'
+                                    variant="filled"
+                                    required
+                                    fullWidth
+                                    id="password"
+                                    name="first name"
+                                    label="Име"
+                                    type="first name"
+                                    value={name}
+                                    onChange={(e) => {
+                                        setName(e.target.value);
+                                    }}
+                                />
+                                <TextField
+                                    margin="normal"
+                                    size='small'
+                                    variant="filled"
+                                    required
+                                    fullWidth
+                                    id="password"
+                                    name="last name"
+                                    label="Презиме"
+                                    type="last name"
+                                    value={lastName}
+                                    onChange={(e) => {
+                                        setlastName(e.target.value);
+                                    }}
+                                />
                                 <TextField
                                     variant={"filled"}
                                     margin="normal"
                                     required
+                                    size='small'
+
                                     fullWidth
                                     id="email"
                                     label="Email Address"
@@ -69,9 +115,40 @@ const Register = () => {
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                 />
-
                                 <TextField
                                     margin="normal"
+                                    size='small'
+                                    variant="filled"
+                                    required
+                                    fullWidth
+                                    id="phone"
+                                    name="phone"
+                                    label="Мобилен телефон"
+                                    type="phone"
+                                    value={phone}
+                                    onChange={(e) => {
+                                        setPhone(e.target.value);
+                                    }}
+                                />
+                                <TextField
+                                    margin="normal"
+                                    variant="filled"
+                                    size='small'
+                                    required
+                                    fullWidth
+                                    id="address"
+                                    name="address"
+                                    label="Адреса на живеење"
+                                    type="address"
+                                    value={address}
+                                    onChange={(e) => {
+                                        setAddress(e.target.value);
+                                    }}
+                                />
+                                <TextField
+                                    margin="normal"
+                                    size='small'
+
                                     variant="filled"
                                     required
                                     fullWidth
@@ -87,6 +164,8 @@ const Register = () => {
                                 <TextField
                                     margin="normal"
                                     variant="filled"
+                                    size='small'
+
                                     required
                                     fullWidth
                                     id="password"
@@ -103,11 +182,11 @@ const Register = () => {
                                     fullWidth
                                     variant="contained"
                                     sx={{mt: 3, mb: 2}}
+                                    onClick={handleRegister}
                                 >
                                     ПРОДОЛЖЕТЕ
                                     <NavigateNextIcon/>
                                 </StyledAuthButton>
-
 
                                 <Grid container justifyContent={"flex-end"}>
                                     <Grid item>
@@ -117,9 +196,7 @@ const Register = () => {
                             </Box>
                         </Box>
                     </Container>
-                    <StyledDivPicuture>
-                        <img src={cartLogin} alt={"Cart"}/>
-                    </StyledDivPicuture>
+
                 </StyledFlexDiv>
             </StyledWhiteBody>
         </>
